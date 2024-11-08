@@ -3,8 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .auth-buttons {
+            margin: 20px;
+        }
+        .auth-button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .login-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .signup-btn {
+            background-color: #008CBA;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-<h1>Home</h1>
+    <h1>Home</h1>
+    <div class="auth-buttons">
+        <a href="{% url 'login' %}"><button class="auth-button login-btn">Login</button></a>
+        <a href="{% url 'signup' %}"><button class="auth-button signup-btn">Sign Up</button></a>
+    </div>
 </body>
 </html>
