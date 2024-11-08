@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.http import StreamingHttpResponse
@@ -21,6 +21,10 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
 
 
 def signup_view(request):
@@ -47,7 +51,7 @@ def get_chat_history(user) -> list:
     # Add system message first
     messages.append({
         "role": "system",
-        "content": "You are a helpful and knowledgeable AI assistant. You provide accurate, informative responses while maintaining a friendly and professional tone."
+        "content": "You are a helpful and knowledgeable AI assistant"
     })
 
     # Add user chat history
